@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIMS — BIRD Information Management System</title>
+<link rel="icon" type="image/png" href="assets/bird-logo.png">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" onerror="window.__noQR=true"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" onerror="window.__noXLSX=true"></script>
+</head>
+<body>
+<div id="login"><div class="box">
+<div class="logo"><img src="assets/bird-logo.png" alt="Bankers Institute of Rural Development, Mangaluru"></div>
+<h1>BIMS</h1><p class="sub"><b>BIRD Information Management System</b><br>BIRD, Mangaluru</p>
+<div class="roles" id="roleSel">
+<div class="role active" data-role="Admin"><span class="ic">🛡️</span>Admin</div>
+<div class="role" data-role="PD/Co-PD"><span class="ic">🎓</span>PD / Co-PD</div>
+<div class="role" data-role="General"><span class="ic">👁️</span>General</div></div>
+<div style="margin-bottom:12px"><label>User ID</label><input id="uid" value="admin"></div>
+<div><label>Password</label><input id="pwd" type="password" value="bird123"></div>
+<button class="btn" style="width:100%;margin-top:18px" onclick="doLogin()">Sign in →</button>
+<div class="hint"><b>Demo logins</b> (any password): 🛡️ <b>admin</b> · 🎓 <b>pd</b> · 👁️ <b>user</b></div>
+</div></div>
+<div id="app"><div class="topbar">
+<button class="hamburger" onclick="document.querySelector('.side').classList.toggle('open')">☰</button>
+<div class="brand"><span class="b"><img src="assets/bird-logo.png" alt="BIRD, Mangaluru"></span> BIMS <span style="font-weight:400;font-size:12px;opacity:.85">· BIRD Information Management System</span></div>
+<div class="spacer"></div>
+<div class="a11ybar"><div class="grp" title="Text size"><span class="lbl">Text</span>
+<button onclick="setFont(-1)">A−</button><button onclick="setFont(0)" style="font-weight:800">A</button><button onclick="setFont(1)" style="font-size:16px">A+</button></div>
+<div class="grp" title="Colour scheme"><span class="lbl">Theme</span>
+<button class="sw" style="background:#1f7a3f" onclick="setTheme('')"></button>
+<button class="sw" style="background:#1b241e" onclick="setTheme('theme-dark')"></button>
+<button class="sw" style="background:#000;border-color:#ffd400" onclick="setTheme('theme-contrast')"></button></div></div>
+<div class="who"><span class="badge-role" id="tRole">Admin</span><br><small id="tUser">admin</small></div>
+<button class="btn sm" style="background:rgba(255,255,255,.2)" onclick="logout()">Logout</button></div>
+<div class="layout"><aside class="side"><nav class="nav" id="nav">
+<a data-p="dashboard" class="active"><span class="ic">📊</span>Dashboard</a>
+<a data-p="programmes"><span class="ic">📅</span>Programmes</a>
+<a data-p="registration"><span class="ic">📝</span>Registration</a>
+<a data-p="assessment"><span class="ic">🧪</span>Entry / Exit Tests</a>
+<a data-p="feedback"><span class="ic">⭐</span>Feedback</a>
+<a data-p="pdb"><span class="ic">🗂️</span>Participant Database</a>
+<a data-p="claims"><span class="ic">📈</span>Claims Data</a>
+<a data-p="export"><span class="ic">⬇️</span>Data Export</a>
+<a data-p="users"><span class="ic">👥</span>User Management</a>
+</nav></aside><main class="main" id="view"></main></div></div>
+<div class="modal-bg" id="modalBg"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
+<script src="js/logo-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
